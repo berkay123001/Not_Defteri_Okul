@@ -1,0 +1,45 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="ModernNotepad.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="ModernNotepad"
+        MinHeight="400" MinWidth="600"
+        TransparencyLevelHint="AcrylicBlur"
+        ExtendClientAreaToDecorationsHint="True">
+  <DockPanel>
+    <Menu DockPanel.Dock="Top" Background="#2E2E2E">
+      <MenuItem Header="_File">
+        <MenuItem Header="_New" Command="{Binding NewFileCommand}"/>
+        <MenuItem Header="_Open..." Command="{Binding OpenFileCommand}"/>
+        <MenuItem Header="_Save" Command="{Binding SaveFileCommand}"/>
+        <MenuItem Header="Save _As..." Command="{Binding SaveFileAsCommand}"/>
+        <Separator/>
+        <MenuItem Header="_Exit" Name="ExitMenuItem"/>
+      </MenuItem>
+      <MenuItem Header="_Edit">
+        <MenuItem Header="_Undo" Name="UndoMenuItem"/>
+        <MenuItem Header="_Redo" Name="RedoMenuItem"/>
+        <Separator/>
+        <MenuItem Header="_Cut" Name="CutMenuItem"/>
+        <MenuItem Header="_Copy" Name="CopyMenuItem"/>
+        <MenuItem Header="_Paste" Name="PasteMenuItem"/>
+      </MenuItem>
+      <MenuItem Header="_Help">
+        <MenuItem Header="_About" Name="AboutMenuItem"/>
+      </MenuItem>
+    </Menu>
+    <TextBox Name="EditorTextBox"
+             Text="{Binding Text, Mode=TwoWay}"
+             AcceptsReturn="True"
+             TextWrapping="Wrap"
+             ScrollViewer.HorizontalScrollBarVisibility="Auto"
+             ScrollViewer.VerticalScrollBarVisibility="Auto"
+             Background="#1E1E1E"
+             Foreground="White"
+             FontFamily="Cascadia Mono,Consolas,Monospace"
+             Padding="10"/>
+  </DockPanel>
+</Window>
