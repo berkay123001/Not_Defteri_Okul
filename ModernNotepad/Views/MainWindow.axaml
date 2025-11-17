@@ -4,11 +4,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="ModernNotepad.Views.MainWindow"
-        Icon="/Assets/avalonia-logo.ico"
-        Title="ModernNotepad"
+        Title="Modern Not Defteri"
         MinHeight="400" MinWidth="600"
         TransparencyLevelHint="AcrylicBlur"
         ExtendClientAreaToDecorationsHint="True">
+  
+  <Window.KeyBindings>
+    <KeyBinding Gesture="Ctrl+Z" Command="{Binding #UndoMenuItem.Command}" />
+    <KeyBinding Gesture="Ctrl+Y" Command="{Binding #RedoMenuItem.Command}" />
+    <KeyBinding Gesture="Ctrl+X" Command="{Binding #CutMenuItem.Command}" />
+    <KeyBinding Gesture="Ctrl+C" Command="{Binding #CopyMenuItem.Command}" />
+    <KeyBinding Gesture="Ctrl+V" Command="{Binding #PasteMenuItem.Command}" />
+  </Window.KeyBindings>
+  
   <DockPanel>
     <Menu DockPanel.Dock="Top" Background="#2E2E2E">
       <MenuItem Header="_File">
@@ -20,12 +28,8 @@
         <MenuItem Header="_Exit" Name="ExitMenuItem"/>
       </MenuItem>
       <MenuItem Header="_Edit">
-        <MenuItem Header="_Undo" Name="UndoMenuItem"/>
-        <MenuItem Header="_Redo" Name="RedoMenuItem"/>
-        <Separator/>
-        <MenuItem Header="_Cut" Name="CutMenuItem"/>
-        <MenuItem Header="_Copy" Name="CopyMenuItem"/>
-        <MenuItem Header="_Paste" Name="PasteMenuItem"/>
+        <MenuItem Header="_Undo" Name="UndoMenuItem" InputGesture="Ctrl+Z"/>
+        <MenuItem Header="_Redo" Name="RedoMenuItem" InputGesture="Ctrl+Y"/>
       </MenuItem>
       <MenuItem Header="_Help">
         <MenuItem Header="_About" Name="AboutMenuItem"/>
